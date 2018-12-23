@@ -18,8 +18,6 @@ for fileName in os.listdir(documentsDirectory):
 for word in classFolders:
     subjects.append(re.sub(" Class", "", word))
 
-print("Hello!")
-
 for fileName in os.listdir(currentDirectory):
     trueFileName = os.path.splitext(fileName)[0]
     fileSplit = trueFileName.split()
