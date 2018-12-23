@@ -18,9 +18,16 @@ for fileName in os.listdir(documentsDirectory):
 for word in classFolders:
     subjects.append(re.sub(" Class", "", word))
 
+print("Hello!")
+
 for fileName in os.listdir(currentDirectory):
     trueFileName = os.path.splitext(fileName)[0]
     fileSplit = trueFileName.split()
     for subject in subjects:
         if subject.__contains__(fileSplit[0]):
-            shutil.move(currentDirectory + "\\" + fileName, documentsDirectory + "\\" + subject + " Class")
+                if (os.path.isfile(documentsDirectory + "\\" + subject + " Class" + "\\" + fileName)):
+                        dupeFileName = trueFileName + "(1)" + os.path.splitext(fileName)[1]
+                        os.rename(fileName, dupeFileName)
+                        shutil.move(currentDirectory + "\\" + dupeFileName, documentsDirectory + "\\" + subject + " Class")
+                else:
+                        shutil.move(currentDirectory + "\\" + fileName, documentsDirectory + "\\" + subject + " Class")
